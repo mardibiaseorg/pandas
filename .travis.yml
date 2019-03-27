@@ -1,5 +1,5 @@
 sudo: false
-language: python
+language: python 
 python: 3.5
 
 # To turn off cached cython files and compiler cache
