@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """
 Tests for DatetimeIndex timezone-related methods
 """
@@ -12,7 +11,6 @@ import pytest
 import pytz
 
 from pandas._libs.tslibs import conversion, timezones
-from pandas.compat import lrange
 import pandas.util._test_decorators as td
 
 import pandas as pd
@@ -43,7 +41,7 @@ fixed_off = FixedOffset(-420, '-07:00')
 fixed_off_no_name = FixedOffset(-330, None)
 
 
-class TestDatetimeIndexTimezones(object):
+class TestDatetimeIndexTimezones:
     # -------------------------------------------------------------
     # DatetimeIndex.tz_convert
     def test_tz_convert_nat(self):
@@ -959,7 +957,7 @@ class TestDatetimeIndexTimezones(object):
     def test_dti_take_dont_lose_meta(self, tzstr):
         rng = date_range('1/1/2000', periods=20, tz=tzstr)
 
-        result = rng.take(lrange(5))
+        result = rng.take(range(5))
         assert result.tz == rng.tz
         assert result.freq == rng.freq
 
@@ -1092,7 +1090,7 @@ class TestDatetimeIndexTimezones(object):
             assert ts == index[i]
 
 
-class TestDateRange(object):
+class TestDateRange:
     """Tests for date_range with timezones"""
     def test_hongkong_tz_convert(self):
         # GH#1673 smoke test
@@ -1145,7 +1143,7 @@ class TestDateRange(object):
         assert stamp == rng[1]
 
 
-class TestToDatetime(object):
+class TestToDatetime:
     """Tests for the to_datetime constructor with timezones"""
     def test_to_datetime_utc(self):
         arr = np.array([dateutil.parser.parse('2012-06-13T01:39:00Z')],
